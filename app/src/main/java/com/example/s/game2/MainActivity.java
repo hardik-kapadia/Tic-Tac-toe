@@ -1,5 +1,6 @@
 package com.example.s.game2;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -13,13 +14,18 @@ public class MainActivity extends AppCompatActivity
 {
     int player =0;
     int x[][] = new int[3][3];
+    static int red_s =0, yellow_s=0;
     public void move(View view)
     {
         ImageView box = (ImageView) view;
-        if(player%2 == 0)
+        int tapped = Integer.parseInt(box.getTag().toString());
+        if(x[tapped/10][tapped%10]==0)
         {
-            box.setImageResource(R.drawable.red);
-            switch(box.getId())
+            if(player%2 == 0)
+            {
+                box.setImageResource(R.drawable.red);
+                x[tapped/10][tapped%10] = 1;
+            /*switch(box.getId())
             {
                 case (R.id.box00) : x[0][0] = 1;
                     //Log.i("Info","Set2");
@@ -42,11 +48,12 @@ public class MainActivity extends AppCompatActivity
                     break;
                 default:
                     Log.i("Info", "No Data set");
-            }
+            }*/
         }
         else{
             box.setImageResource(R.drawable.yellow);
-            switch(box.getId())
+                x[tapped/10][tapped%10] = 2;
+           /* switch(box.getId())
             {
                 case (R.id.box00) : x[0][0] = 2;
                     //Log.i("Info","Set2");
@@ -69,13 +76,30 @@ public class MainActivity extends AppCompatActivity
                     break;
                 default:
                     Log.i("Info", "No Data set");
-            }
+            }*/
+        }
+        }
+            else{
+            final Toast t = Toast.makeText(getApplicationContext(),"Illegal move", Toast.LENGTH_SHORT);
+            t.show();
+            new CountDownTimer(750,1000)
+            {
+                public void onTick(long millisUntilFinished)
+                {
+
+                }
+                public void onFinish()
+                {
+                    t.cancel();
+                }
+            }.start();
         }
         player++;
         int ch = check();
         if(ch == 1)
         {
             final Toast t = Toast.makeText(MainActivity.this," Team Red Wins ", Toast.LENGTH_LONG);
+            red_s++;
             t.show();
             new CountDownTimer(2500, 1000)
             {
@@ -89,22 +113,34 @@ public class MainActivity extends AppCompatActivity
                 }
 
             }.start();
+            Intent i = new Intent(this, Home.class);
+/*            i.putExtra("red score",red_s);
+            i.putExtra("yellow score",yellow_s);*/
+            startActivity(i);
         }
         else if(ch == 2)
         {
             final Toast t = Toast.makeText(MainActivity.this," Team Yellow wins ", Toast.LENGTH_SHORT);
+            yellow_s++;
             t.show();
             new CountDownTimer(2500, 1000)
             {
-                public void onTick(long millisUntilFinished) {
+                public void onTick(long millisUntilFinished)
+                {
                     //Toast.makeText(MainActivity.this, "seconds remaining " +  millisUntilFinished/1000, Toast.LENGTH_SHORT).show();//"seconds remaining: " + millisUntilFinished / 1000);
                 }
-                public void onFinish() {
+                public void onFinish()
+                {
                     t.cancel();
                     reset();
                 }
 
             }.start();
+            Intent i = new Intent(this, Home.class);
+           /* i.putExtra("red score",red_s);
+            i.putExtra("yellow score",yellow_s);
+          */  startActivity(i);
+
         }
         else if(ch == 0)
         {
@@ -120,8 +156,6 @@ public class MainActivity extends AppCompatActivity
                 }
 
             }.start();
-
-
         }
         if(player == 9)
         {
@@ -138,6 +172,10 @@ public class MainActivity extends AppCompatActivity
                 }
 
             }.start();
+            Intent i = new Intent(this, Home.class);
+          /*  i.putExtra("red score",red_s);
+            i.putExtra("yellow score",yellow_s);
+            */startActivity(i);
         }
     }
     public int check()
@@ -183,7 +221,6 @@ public class MainActivity extends AppCompatActivity
         }
         player =0;
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

@@ -21,16 +21,6 @@
         android:background="@drawable/board">
 
         <ImageView
-            android:layout_width="107dp"
-            android:layout_height="102dp"
-            android:id="@+id/box00"
-            android:layout_alignParentEnd="true"
-            android:layout_row = "0"
-            android:layout_column = "0"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="20dp"
-            android:onClick="move" />
-        <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:id="@+id/box10"
@@ -40,18 +30,9 @@
             android:layout_column = "1"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
-            android:onClick="move"/>
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:id="@+id/box20"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_row = "0"
-            android:layout_column = "2"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:onClick="move"/>
+            android:onClick="move"
+            android:tag="10" />
+
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -62,18 +43,9 @@
             android:layout_column = "0"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="72dp"
-            android:onClick="move"/>
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:id="@+id/box11"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_row = "1"
-            android:layout_column = "1"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="72dp"
-            android:onClick="move"/>
+            android:onClick="move"
+            android:tag="01" />
+
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -84,7 +56,8 @@
             android:layout_column = "2"
             android:layout_marginTop="72dp"
             android:layout_marginLeft="20dp"
-            android:onClick="move"/>
+            android:onClick="move"
+            android:tag="21" />
 
         <ImageView
             android:layout_width="100dp"
@@ -96,7 +69,8 @@
             android:layout_column = "1"
             android:layout_marginTop="60dp"
             android:layout_marginLeft="20dp"
-            android:onClick="move"/>
+            android:onClick="move"
+            android:tag="12" />
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -107,7 +81,34 @@
             android:layout_column = "2"
             android:layout_marginTop="60dp"
             android:layout_marginLeft="20dp"
-            android:onClick="move"/>
+            android:onClick="move"
+            android:tag="22" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/box20"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_row = "0"
+            android:layout_column = "2"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:onClick="move"
+            android:tag="20" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/box11"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_row = "1"
+            android:layout_column = "1"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="72dp"
+            android:onClick="move"
+            android:tag="11" />
 
         <ImageView
             android:layout_width="100dp"
@@ -119,7 +120,20 @@
             android:layout_marginTop="60dp"
             android:layout_marginLeft="10dp"
             android:layout_alignParentTop="true"
-            android:onClick="move"/>
+            android:onClick="move"
+            android:tag="02" />
+
+        <ImageView
+            android:layout_width="107dp"
+            android:layout_height="102dp"
+            android:id="@+id/box00"
+            android:layout_alignParentEnd="true"
+            android:layout_row = "0"
+            android:layout_column = "0"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
+            android:onClick="move"
+            android:tag="00" />
 
     </GridLayout>
 </RelativeLayout>
